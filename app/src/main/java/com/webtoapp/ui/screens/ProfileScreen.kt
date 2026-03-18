@@ -54,7 +54,8 @@ fun ProfileScreen(
     onLogout: () -> Unit,
     onNavigateDevices: () -> Unit = {},
     onNavigateActivationCode: () -> Unit = {},
-    onNavigateTeams: () -> Unit = {}
+    onNavigateTeams: () -> Unit = {},
+    onNavigateSubscription: () -> Unit = {}
 ) {
     val authState by authViewModel.authState.collectAsStateWithLifecycle()
     val proStatus by authViewModel.proStatus.collectAsStateWithLifecycle()
@@ -293,7 +294,52 @@ fun ProfileScreen(
 
             // 会员状态卡片
             if (proStatus != null || user.isPro) {
-                ProStatusCard(proStatus, user)
+                ProStatusCard(proStatus, user, onNavigateSubscription)
+                Spacer(modifier = Modifier.height(16.dp))
+            } else {
+                // Free 用户 — 显示升级引导
+                EnhancedElevatedCard(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onNavigateSubscription() },
+                    shape = RoundedCornerShape(16.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+                    )
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(20.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            Icons.Outlined.WorkspacePremium,
+                            contentDescription = null,
+                            modifier = Modifier.size(24.dp),
+                            tint = MaterialTheme.colorScheme.outline
+                        )
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                text = Strings.authProInactive,
+                                style = MaterialTheme.typography.bodyLarge,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                            Text(
+                                text = Strings.authUpgradeDesc,
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                        Icon(
+                            Icons.Outlined.ChevronRight,
+                            contentDescription = null,
+                            modifier = Modifier.size(18.dp),
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+                        )
+                    }
+                }
                 Spacer(modifier = Modifier.height(16.dp))
             }
 
@@ -674,7 +720,7 @@ private fun StatItem(value: String, label: String) {
 }
 
 @Composable
-private fun ProStatusCard(proStatus: ProStatus?, user: UserProfile) {
+private fun ProStatusCard(proStatus: ProStatus?, user: UserProfile, onNavigateSubscription: () -> Unit = {}) {
     val isUltra = user.proPlan.startsWith("ultra")
     val isProLifetime = user.proPlan == "pro_lifetime" || user.proPlan == "lifetime"
     val isUltraLifetime = user.proPlan == "ultra_lifetime"
@@ -704,7 +750,9 @@ private fun ProStatusCard(proStatus: ProStatus?, user: UserProfile) {
     }
 
     EnhancedElevatedCard(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onNavigateSubscription() },
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
             containerColor = cardColor
