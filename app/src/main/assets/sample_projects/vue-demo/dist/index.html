@@ -1,21 +1,494 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue Demo App</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <title>đź‡§đź‡ľ Belarusian CE English Â· new trial test 2026 (spec based)</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+        body {
+            background: #f2f5f9;
+            margin: 20px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .test-wrapper {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 30px 25px;
+        }
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 8px;
+            color: #1a2b4c;
+            border-left: 8px solid #c0392b;
+            padding-left: 20px;
+        }
+        .badge {
+            background: #eef2f6;
+            color: #2c3e50;
+            padding: 6px 15px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+        section {
+            margin-bottom: 40px;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 20px 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid #e6edf4;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #1e3c5c;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 span {
+            background: #c0392b;
+            color: white;
+            font-size: 1rem;
+            padding: 4px 14px;
+            border-radius: 30px;
+        }
+        .text-block {
+            background: #f8fafd;
+            padding: 16px 20px;
+            border-radius: 18px;
+            margin-bottom: 20px;
+            border-left: 4px solid #c0392b;
+            font-style: normal;
+            line-height: 1.5;
+        }
+        .question-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .q-item {
+            background: #f9fcff;
+            border-radius: 20px;
+            padding: 16px 20px;
+            border: 1px solid #dde5ed;
+            transition: 0.1s;
+        }
+        .q-item.correct {
+            background: #e6f7e6;
+            border-color: #2e7d32;
+        }
+        .q-item.wrong {
+            background: #ffefed;
+            border-color: #c0392b;
+        }
+        .q-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #0b2a41;
+            font-size: 1.05rem;
+        }
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px 30px;
+            align-items: center;
+        }
+        .options label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+        input[type="text"] {
+            padding: 8px 14px;
+            border: 2px solid #cbd6e3;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            width: 200px;
+            max-width: 100%;
+            background: white;
+        }
+        input[type="text"]:focus {
+            border-color: #c0392b;
+            outline: none;
+        }
+        .inline-text {
+            display: inline-block;
+            margin: 0 5px;
+        }
+        .line-input {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 12px 0;
+        }
+        .line-label {
+            font-family: 'Courier New', monospace;
+            background: #ecf0f3;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+        }
+        .small-hint {
+            font-size: 0.8rem;
+            color: #4d6278;
+            margin-top: 5px;
+        }
+        button {
+            background: #c0392b;
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 8px 14px rgba(192,57,43,0.3);
+            transition: 0.2s;
+            margin: 30px 0 15px;
+            width: 100%;
+        }
+        button:hover {
+            background: #a32f21;
+            transform: scale(1.01);
+        }
+        .score-board {
+            background: #1e3c5c;
+            color: white;
+            font-size: 2rem;
+            padding: 20px;
+            border-radius: 40px;
+            text-align: center;
+            margin: 30px 0 10px;
+        }
+        .expl-box {
+            background: #fff9e0;
+            border-radius: 18px;
+            padding: 16px 22px;
+            border-left: 8px solid #f39c12;
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+        .expl-box strong {
+            color: #b85e00;
+        }
+        hr {
+            border: 1px solid #e0e9f2;
+            margin: 25px 0;
+        }
+        .reading-text {
+            background: #eef3f9;
+            padding: 16px;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+    </style>
 </head>
 <body>
-    <div id="app">
-        <div style="text-align: center; padding: 40px;">
-            <div style="font-size: 48px; margin-bottom: 20px;">🟢</div>
-            <h2 style="color: #42b883; margin-bottom: 10px;">Vue Demo</h2>
-            <p style="color: #666;">正在初始化...</p>
-        </div>
-    </div>
-    
-    <script src="main.js"></script>
+<div class="test-wrapper">
+    <h1>BELARUSIAN CENTRALISED EXAM 2026 Â·01 </h1>
+    <div class="badge">English Â· 40 tasks Â· fully renewed according to ministry specs - Tarek Amer School</div>
+
+    <section>
+        <h2><span>PART A</span> Reading & multiple choice</h2>
+        <div id="partA" class="question-grid"></div>
+    </section>
+
+    <div id="dynamicTest"></div>  <!-- part B injected -->
+
+    <button id="submitBtn">âś… SUBMIT & CHECK ANSWERS</button>
+    <div id="scoreDisplay" class="score-board">â€” / 40</div>
+    <div id="explanations" class="expl-box">đź’ˇ After submission, explanations appear here.</div>
+</div>
+
+<script>
+    (function() {
+        // ---------- NEW ANSWER KEY (fully changed) ----------
+        const correct = {
+            // A part
+            A1: '1', A2: '1', A3: '1', A4: '1',      // Amina text
+            A5: '4',                                   // neither
+            A6: '3',                                   // a, an
+            A7: '1',                                   // have you
+            A8: '1',                                   // Despite
+            A9: '2',                                   // connected
+            A10: '3',                                  // look
+            A11: '2',                                  // carried
+            A12: '3',                                  // chance
+            A13: '1',                                  // Don't worry
+            A14: '1',                                  // Yes, please do
+            A15: '2', A16: '2', A17: '1', A18: '3',    // Elena the photographer
+            // B part
+            B1: 'to', B2: 'to', B3: 'with',
+            B4: 'fewer',      // (fewer than 50 students)
+            B5: 'is',
+            B6: 'how',
+            B7: 'sense',
+            B8: 'break',
+            B9: 'himself', B10: 'can', B11: 'hardly', B12: 'to', B13: 'that',
+            B14: 'few', B15: 'have', B16: 'to', B17: 'does', B18: 'astronauts',
+            B19: 'discoveries', B20: 'relatively', B21: 'difficulties', B22: 'enables'
+        };
+
+        // ---------- NEW EXPLANATIONS (bilingual) ----------
+        const explanations = {
+            A1: "đźź˘ Present Simple (doesn't use) â€“ habitual action / ĐżŃ€Đ¸Đ˛Ń‹Ń‡Đ˝ĐľĐµ Đ´ĐµĐąŃŃ‚Đ˛Đ¸Đµ (ĐľĐ˝Đ° Đ˝Đµ Đ¸ŃĐżĐľĐ»ŃŚĐ·ŃĐµŃ‚ ŃĐľŃ„Ń‚).",
+            A2: "đźź˘ Past Simple active (developed) â€“ Đ·Đ°Đ˛ĐµŃ€ŃŃ‘Đ˝Đ˝ĐľĐµ Đ´ĐµĐąŃŃ‚Đ˛Đ¸Đµ Đ˛ ĐżŃ€ĐľŃĐ»ĐľĐĽ (Ń€Đ°Đ·Đ˛Đ¸Đ»Đ° Đ˝Đ°Đ˛Ń‹Đş Đ˛ Đ´ĐµŃ‚ŃŃ‚Đ˛Đµ).",
+            A3: "đźź˘ Present Simple passive (are constructed) â€“ ŃŃ‚Ń€Đ°Đ´Đ°Ń‚ĐµĐ»ŃŚĐ˝Ń‹Đą Đ·Đ°Đ»ĐľĐł, Đ˝Đ°ŃŃ‚ĐľŃŹŃ‰ĐµĐµ (Đ·Đ´Đ°Đ˝Đ¸ŃŹ ŃŃ‚Ń€ĐľŃŹŃ‚ŃŃŹ).",
+            A4: "đźź˘ Future (will inspire) â€“ Đ±ŃĐ´ŃŃ‰ĐµĐµ ĐżŃ€ĐľŃŃ‚ĐľĐµ, Đ˝Đ°Đ´ĐµĐ¶Đ´Đ° Đ˝Đ° Đ˛Đ´ĐľŃ…Đ˝ĐľĐ˛ĐµĐ˝Đ¸Đµ.",
+            A5: "đźź˘ neither (of them) â€“ ĐľŃ‚Ń€Đ¸Ń†Đ°Đ˝Đ¸Đµ Đ´Đ»ŃŹ Đ´Đ˛ŃŃ… Đ»Đ¸Ń† (Đ´Đ˛Đ° Đ´Ń€ŃĐłĐ° Đ˝Đµ ĐżŃ€Đ¸ŃĐ»Đ¸ Đ˛ĐľĐ˛Ń€ĐµĐĽŃŹ).",
+            A6: "đźź˘ a university (Đ·Đ˛ŃĐş [j]) / an astronaut (ĐłĐ»Đ°ŃĐ˝Ń‹Đą) â†’ a, an.",
+            A7: "đźź˘ Tag question: â€neverâ€™ = ĐľŃ‚Ń€Đ¸Ń†Đ°Đ˝Đ¸Đµ, ĐżĐľŃŤŃ‚ĐľĐĽŃ ŃŃ‚Đ˛ĐµŃ€Đ´Đ¸Ń‚ĐµĐ»ŃŚĐ˝Ń‹Đą Ń…Đ˛ĐľŃŃ‚ â€have youâ€™?",
+            A8: "đźź˘ Despite + noun phrase (Đ˝ĐµŃĐĽĐľŃ‚Ń€ŃŹ Đ˝Đ° ĐżĐ»ĐľŃ…ŃŃŽ ĐżĐľĐłĐľĐ´Ń).",
+            A9: "đźź˘ connected with (ŃĐ˛ŃŹĐ·Đ°Đ˝Đ˝Ń‹Đµ Ń Đ¸Đ˝Đ´ŃŃŃ‚Ń€Đ¸ĐµĐą ĐĽĐľĐ´Ń‹) â€“ ĐżŃ€Đ¸Ń‡Đ°ŃŃ‚Đ¸Đµ Ń ĐżŃ€ĐµĐ´Đ»ĐľĐłĐľĐĽ.",
+            A10: "đźź˘ look back (ĐľĐłĐ»ŃŹĐ´Ń‹Đ˛Đ°Ń‚ŃŚŃŃŹ Đ˝Đ° ĐżŃ€ĐľŃĐ»ĐľĐµ) â€“ Ń„Ń€Đ°Đ·ĐľĐ˛Ń‹Đą ĐłĐ»Đ°ĐłĐľĐ».",
+            A11: "đźź˘ carried (Đ°ĐşŃĐµŃŃŃĐ°Ń€Ń‹, ĐşĐľŃ‚ĐľŃ€Ń‹Đµ Đ˝ĐľŃĐ¸Đ»Đ¸ Ń ŃĐľĐ±ĐľĐą) â€“ past participle.",
+            A12: "đźź˘ every chance (ĐµŃŃ‚ŃŚ Đ˛ŃĐµ ŃĐ°Đ˝ŃŃ‹) â€“ ŃŃŃ‚ĐľĐąŃ‡Đ¸Đ˛ĐľĐµ Đ˛Ń‹Ń€Đ°Đ¶ĐµĐ˝Đ¸Đµ.",
+            A13: "đźź˘ Don't worry â€“ ĐżĐľĐ´Ń…ĐľĐ´Đ¸Ń‚ ĐşĐ°Đş ŃŃĐżĐľĐşĐ°Đ¸Đ˛Đ°ŃŽŃ‰Đ¸Đą ĐľŃ‚Đ˛ĐµŃ‚ Đ˝Đ° Đ·Đ°Đ±Ń‹Ń‚Ń‹Đą Đ·Đ°Ń€ŃŹĐ´Đ˝Đ¸Đş.",
+            A14: "đźź˘ Yes, please do â€“ Đ˛ĐµĐ¶Đ»Đ¸Đ˛ĐľĐµ ŃĐľĐłĐ»Đ°ŃĐ¸Đµ Đ˝Đ° ĐżŃ€ĐµĐ´Đ»ĐľĐ¶ĐµĐ˝Đ¸Đµ ĐľŃ‚ĐşŃ€Ń‹Ń‚ŃŚ ĐľĐşĐ˝Đľ.",
+            A15: "đźź˘ Elena prefers film because it forces her to be more intentional (ĐľŃ‚Đ˛ĐµŃ‚ 2).",
+            A16: "đźź˘ Đ’ ŃĐ˝Đ¸Đ˛ĐµŃ€ŃĐ¸Ń‚ĐµŃ‚Đµ ĐľĐ˝Đ° Đ¸Đ·ŃŃ‡Đ°Đ»Đ° Đ±Đ¸ĐľĐ»ĐľĐłĐ¸ŃŽ Đ¸ĺ¶ĺ°” Đ±Ń€Đ°Đ»Đ° ĐşĐ°ĐĽĐµŃ€Ń (ĐľŃ‚Đ˛ĐµŃ‚ 2).",
+            A17: "đźź˘ ĐŁŃĐżĐµŃ… ĐżŃ€Đ¸ŃŃ‘Đ», ĐşĐľĐłĐ´Đ° Đ¶ŃŃ€Đ˝Đ°Đ» ĐşŃĐżĐ¸Đ» ĐµŃ‘ Ń„ĐľŃ‚Đľ ŃĐ˝ĐµĐ¶Đ˝Ń‹Ń… Đ±Đ°Ń€ŃĐľĐ˛ (ĐľŃ‚Đ˛ĐµŃ‚ 1).",
+            A18: "đźź˘ ĐˇĐĽŃ‹ŃĐ» Ń€Đ°Đ±ĐľŃ‚Ń‹ Đ˛ Ń‚ĐľĐĽ, Ń‡Ń‚ĐľĐ±Ń‹ ĐżĐľĐĽĐľŃ‡ŃŚ Đ·Đ°Ń‰Đ¸Ń‚Đ¸Ń‚ŃŚ Đ¶Đ¸Đ˛ĐľŃ‚Đ˝Ń‹Ń… (ĐľŃ‚Đ˛ĐµŃ‚ 3).",
+            B1: "đźź˘ contributes to (Đ˛Đ˝ĐľŃĐ¸Ń‚ŃŚ Đ˛ĐşĐ»Đ°Đ´ Đ˛) â€“ ĐżŃ€ĐµĐ´Đ»ĐľĐł to.",
+            B2: "đźź˘ thanks to (Đ±Đ»Đ°ĐłĐľĐ´Đ°Ń€ŃŹ) â€“ ĐżŃ€ĐµĐ´Đ»ĐľĐł to.",
+            B3: "đźź˘ provide with (ĐľĐ±ĐµŃĐżĐµŃ‡Đ¸Đ˛Đ°Ń‚ŃŚ Ń‡ĐµĐĽ-Đ»Đ¸Đ±Đľ) â€“ ĐżŃ€ĐµĐ´Đ»ĐľĐł with.",
+            B4: "đźź˘ fewer than (Đ´Đ»ŃŹ Đ¸ŃŃ‡Đ¸ŃĐ»ŃŹĐµĐĽŃ‹Ń…: students) â€“ ĐĽĐµĐ˝ŃŚŃĐµ Ń‡ĐµĐĽ.",
+            B5: "đźź˘ information â€“ Đ˝ĐµĐ¸ŃŃ‡Đ¸ŃĐ»ŃŹĐµĐĽĐľĐµ, ĐµĐ´.Ń‡.: is.",
+            B6: "đźź˘ no matter how (ĐşĐ°Đş Đ±Ń‹ Đ˝Đ¸) â€“ how + ĐżŃ€Đ¸Đ»Đ°ĐłĐ°Ń‚ĐµĐ»ŃŚĐ˝ĐľĐµ/Đ˝Đ°Ń€ĐµŃ‡Đ¸Đµ.",
+            B7: "đźź˘ common sense / make sense â€“ ĐľĐ´Đ˝Đľ ŃĐ»ĐľĐ˛Đľ â€senseâ€™.",
+            B8: "đźź˘ break a record / take a break â€“ ĐżĐľĐ´Ń…ĐľĐ´Đ¸Ń‚ â€breakâ€™.",
+            B9: "đźź˘ Đ›Đ¸ŃĐ˝ĐµĐµ â€himselfâ€™: â€to Mars himselfâ€™ â€“ himself Đ˝Đµ Đ˝ŃĐ¶ĐµĐ˝.",
+            B10: "đźź˘ Đ›Đ¸ŃĐ˝ĐµĐµ â€canâ€™: ĐżĐľŃĐ»Đµ will face Đ¸Đ˝Ń„Đ¸Đ˝Đ¸Ń‚Đ¸Đ˛ Đ±ĐµĐ· can.",
+            B11: "đźź˘ Đ›Đ¸ŃĐ˝ĐµĐµ â€hardlyâ€™: Đ˝ŃĐ¶Đ˝Đľ Đ˝Đ°Ń€ĐµŃ‡Đ¸Đµ hard (ŃŃĐµŃ€Đ´Đ˝Đľ), hardly = ĐµĐ´Đ˛Đ°.",
+            B12: "đźź˘ Đ›Đ¸ŃĐ˝ĐµĐµ â€toâ€™: must be overcome (Đ±ĐµĐ· to).",
+            B13: "đźź˘ Đ›Đ¸ŃĐ˝ĐµĐµ â€thatâ€™: require careful planning (ĐżŃ€ŃŹĐĽĐľĐµ Đ´ĐľĐżĐľĐ»Đ˝ĐµĐ˝Đ¸Đµ).",
+            B14: "đźź˘ Đ›Đ¸ŃĐ˝ĐµĐµ â€fewâ€™: time Đ˝ĐµĐ¸ŃŃ‡Đ¸ŃĐ». â†’ little time Đ¸Đ»Đ¸ ĐżŃ€ĐľŃŃ‚Đľ time.",
+            B15: "đźź˘ Đ›Đ¸ŃĐ˝ĐµĐµ â€haveâ€™: once astronauts arrive (present simple ĐżĐľŃĐ»Đµ once).",
+            B16: "đźź˘ Đ›Đ¸ŃĐ˝ĐµĐµ â€toâ€™: may not provide (Đ¸Đ˝Ń„Đ¸Đ˝Đ¸Ń‚Đ¸Đ˛ Đ±ĐµĐ· to ĐżĐľŃĐ»Đµ ĐĽĐľĐ´Đ°Đ»ŃŚĐ˝ĐľĐłĐľ).",
+            B17: "đźź˘ Đ›Đ¸ŃĐ˝ĐµĐµ â€doesâ€™: it is certainly worth (does Đ˝Đµ Đ˝ŃĐ¶Đ˝Đľ).",
+            B18: "đźź˘ Đ›Đ¸ŃĐ˝ĐµĐµ â€astronautsâ€™: ĐşĐ°Đ¶Đ´Ń‹Đą Đ°ŃŃ‚Ń€ĐľĐ˝Đ°Đ˛Ń‚ â€“ each astronaut.",
+            B19: "đźź˘ discoveries (ĐĽĐ˝.Ń‡. ĐľŃ‚ discovery) â€“ ĐľĐ´Đ˝Đľ Đ¸Đ· Đ˛Đ°Đ¶Đ˝ĐµĐąŃĐ¸Ń… ĐľŃ‚ĐşŃ€Ń‹Ń‚Đ¸Đą.",
+            B20: "đźź˘ relatively (Đ˝Đ°Ń€ĐµŃ‡Đ¸Đµ) â€“ ĐľŃ‚Đ˝ĐľŃĐ¸Ń‚ĐµĐ»ŃŚĐ˝Đľ ĐżŃ€ĐľŃŃ‚Đ°ŃŹ ŃŃ€ĐµĐ´Đ°.",
+            B21: "đźź˘ difficulties (Ń‚Ń€ŃĐ´Đ˝ĐľŃŃ‚Đ¸, ĐĽĐ˝.Ń‡.) â€“ significant difficulties.",
+            B22: "đźź˘ enables (ĐłĐ»Đ°ĐłĐľĐ», 3 Đ»Đ¸Ń†Đľ) â€“ ĐżĐľĐ·Đ˛ĐľĐ»ŃŹĐµŃ‚ ĐĽŃ‹ŃĐ»Đ¸Ń‚ŃŚ Đ˝ĐµŃŃ‚Đ°Đ˝Đ´Đ°Ń€Ń‚Đ˝Đľ."
+        };
+
+        // ---------- RENDER PART A (full new content) ----------
+        function renderPartA() {
+            let aDiv = document.getElementById('partA');
+            let aHtml = '';
+
+            // A1-A4 : Amina text
+            aHtml += `<div class="text-block">Meet Amina, a young architect from Morocco. She designs sustainable buildings. Unlike many architects, she (A1) ... computer software; she prefers hand-drawn sketches. She (A2) ... this skill during her childhood, watching her grandfather draw. Her buildings (A3) ... from local materials. In the future, her work (A4) ... hopefully inspire a new generation of eco-architects.</div>`;
+            const a1_4 = [
+                { q: 'A1. Amina ... computer software for her designs.', options: ['1) doesn\'t use', '2) isn\'t using', '3) hasn\'t used', '4) didn\'t use', '5) won\'t use'] },
+                { q: 'A2. She ... this skill during her childhood.', options: ['1) developed', '2) was developed', '3) has developed', '4) had developed', '5) develops'] },
+                { q: 'A3. Her buildings ... from local materials.', options: ['1) are constructed', '2) were constructed', '3) have been constructed', '4) construct', '5) constructed'] },
+                { q: 'A4. In the future, her work ... hopefully inspire many.', options: ['1) will', '2) would', '3) is going to', '4) may', '5) â€“'] } // simplified: will inspire
+            ];
+            a1_4.forEach((item, idx) => {
+                let qnum = `A${idx+1}`;
+                aHtml += `<div class="q-item" id="q-${qnum}"><div class="q-title">${item.q}</div><div class="options">`;
+                item.options.forEach((opt, i) => {
+                    let val = (i+1).toString();
+                    aHtml += `<label><input type="radio" name="${qnum}" value="${val}"> ${opt}</label>`;
+                });
+                aHtml += '</div></div>';
+            });
+
+            // A5-A8
+            const a5_8 = [
+                { q: 'A5. Two friends were supposed to help, but ... of them arrived on time.', options: ['1) any','2) both','3) none','4) neither','5) either'] },
+                { q: 'A6. My brother is ... university student, and he dreams of becoming ... astronaut.', options: ['1) a, a','2) an, an','3) a, an','4) an, a','5) the, a'] },
+                { q: 'A7. Youâ€™ve never been to London, ... ?', options: ['1) have you','2) haven\'t you','3) do you','4) don\'t you','5) are you'] },
+                { q: 'A8. ... the bad weather, the outdoor concert was a success.', options: ['1) Despite','2) Although','3) In spite of','4) Because of','5) Due to'] }
+            ];
+            a5_8.forEach(item => {
+                let qnum = item.q.split('.')[0];
+                aHtml += `<div class="q-item" id="q-${qnum}"><div class="q-title">${item.q}</div><div class="options">`;
+                item.options.forEach((opt, i) => {
+                    let val = (i+1).toString();
+                    aHtml += `<label><input type="radio" name="${qnum}" value="${val}"> ${opt}</label>`;
+                });
+                aHtml += '</div></div>';
+            });
+
+            // A9-A12 fashion/accessories text
+            aHtml += `<div class="text-block">Even experts (A9) ... in the fashion industry often (A10) ... to vintage styles. They draw inspiration from accessories (A11) ... by celebrities in the 1990s. There is every (A12) ... that these trends will dominate next season.</div>`;
+            const a9_12 = [
+                { q: 'A9.', options: ['1) involved','2) connected','3) focused','4) related','5) engaged'] },
+                { q: 'A10.', options: ['1) see','2) watch','3) look','4) consider','5) notice'] },
+                { q: 'A11.', options: ['1) dressed','2) carried','3) approached','4) worn','5) appeared'] },
+                { q: 'A12.', options: ['1) danger','2) risk','3) chance','4) option','5) luck'] }
+            ];
+            a9_12.forEach(item => {
+                let qnum = item.q.replace('.','');
+                aHtml += `<div class="q-item" id="q-${qnum}"><div class="q-title">${item.q}</div><div class="options">`;
+                item.options.forEach((opt, i) => {
+                    let val = (i+1).toString();
+                    aHtml += `<label><input type="radio" name="${qnum}" value="${val}"> ${opt}</label>`;
+                });
+                aHtml += '</div></div>';
+            });
+
+            // A13 dialogue
+            aHtml += `<div class="q-item" id="q-A13"><div class="q-title">A13. X: Oh no, I forgot my phone charger. Y: ______. You can use mine.</div><div class="options">`;
+            ['1) Don\'t worry','2) What a pity','3) I\'m sorry to hear that','4) Never mind','5) No way'].forEach((opt,i)=>{
+                let val = (i+1).toString();
+                aHtml += `<label><input type="radio" name="A13" value="${val}"> ${opt}</label>`;
+            });
+            aHtml += '</div></div>';
+
+            // A14 dialogue
+            aHtml += `<div class="q-item" id="q-A14"><div class="q-title">A14. X: Shall I open the window? Y: ______. Itâ€™s a bit stuffy.</div><div class="options">`;
+            ['1) Yes, please do.','2) No, thanks.','3) I\'d rather you didn\'t.','4) If you want.','5) That\'s all right.'].forEach((opt,i)=>{
+                let val = (i+1).toString();
+                aHtml += `<label><input type="radio" name="A14" value="${val}"> ${opt}</label>`;
+            });
+            aHtml += '</div></div>';
+
+            // A15-A18 reading : Elena the photographer
+            aHtml += `<div class="reading-text"><strong>Elena Vasiliev, wildlife photographer, discusses her project in Siberia.</strong> (1) Unlike many photographers who use digital, Elena prefers film. She says the process forces her to be more intentional. (2) She didn't plan to become a photographer; she studied biology at university. But she always carried a camera on field trips. (3) After graduating, she worked as a research assistant, but spent free time photographing animals. Her big break came when a magazine bought her photos of snow leopards. (4) Now she hopes her photos will raise awareness about endangered species. She says the most rewarding part is knowing her work might help protect these animals.</div>`;
+            const a15_18 = [
+                { q: 'A15. What does Elena say about her photography method?', options: ['1) She uses the latest digital equipment.','2) She finds film photography makes her think more.','3) She only photographs snow leopards.','4) She learned photography at university.'] },
+                { q: 'A16. What did Elena do at university?', options: ['1) She studied photography.','2) She studied biology and took photos occasionally.','3) She spent all her time on research.','4) She sold photos to magazines.'] },
+                { q: 'A17. How did Elena become successful?', options: ['1) A magazine published her snow leopard photos.','2) She got a job as a research assistant.','3) She won a photography contest.','4) Her professor recommended her work.'] },
+                { q: 'A18. Why does Elena find her work meaningful?', options: ['1) It allows her to travel to Siberia.','2) She enjoys using film cameras.','3) It may contribute to animal conservation.','4) She earns a lot of money.'] }
+            ];
+            a15_18.forEach(item => {
+                let qnum = item.q.split('.')[0];
+                aHtml += `<div class="q-item" id="q-${qnum}"><div class="q-title">${item.q}</div><div class="options">`;
+                item.options.forEach((opt, i) => {
+                    let val = (i+1).toString();
+                    aHtml += `<label><input type="radio" name="${qnum}" value="${val}"> ${opt}</label>`;
+                });
+                aHtml += '</div></div>';
+            });
+
+            aDiv.innerHTML = aHtml;
+        }
+        renderPartA();
+
+        // ---------- RENDER PART B (completely new) ----------
+        let container = document.getElementById('dynamicTest');
+        let bHtml = '<section><h2><span>PART B</span> Word building, prepositions, extra words</h2>';
+
+        // B1-B3 text
+        bHtml += `<div class="text-block">Learning a new language contributes (B1) ____ personal growth. Thanks (B2) ____ apps, it's easier than ever. These tools provide you (B3) ____ interactive exercises.</div>`;
+        for(let i=1; i<=3; i++) {
+            bHtml += `<div class="q-item" id="q-B${i}"><div class="q-title">B${i} <input type="text" id="B${i}" placeholder="your answer" size="12"></div></div>`;
+        }
+
+        // B4-B6 one word
+        bHtml += `<div class="q-item" id="q-B4"><div class="q-title">B4. I paid ... than twenty dollars for this shirt. <input type="text" id="B4" placeholder="word" size="12"></div></div>`;
+        bHtml += `<div class="q-item" id="q-B5"><div class="q-title">B5. The information ... reliable, according to experts. <input type="text" id="B5" placeholder="word" size="12"></div></div>`;
+        bHtml += `<div class="q-item" id="q-B6"><div class="q-title">B6. No matter ... hard he tries, he can't solve the puzzle. <input type="text" id="B6" placeholder="word" size="12"></div></div>`;
+
+        // B7-B8 double sentences
+        bHtml += `<div class="q-item" id="q-B7"><div class="q-title">B7. rely on your common ... / It doesn't make ... <input type="text" id="B7" placeholder="one word" size="15"></div>`;
+        bHtml += `<div class="small-hint">â†ł It's important to use common ... / doesn't make ... to buy expensive car.</div></div>`;
+        bHtml += `<div class="q-item" id="q-B8"><div class="q-title">B8. hopes to ... a record / take a ... <input type="text" id="B8" placeholder="one word" size="15"></div>`;
+        bHtml += `<div class="small-hint">â†ł athlete hopes to ... a record / time to take a ...</div></div>`;
+
+        // B9-B18 extra word lines (space exploration)
+        const lines = [
+            "B9. Many astronomers dream of travel to Mars himself one day, but the journey is risky.",
+            "B10. The first astronauts will face can many challenges, including radiation and isolation.",
+            "B11. Scientists are working hardly to develop technology that can support long missions.",
+            "B12. There are lots of obstacles that must be to overcome before humans can go.",
+            "B13. A mission to Mars will require that careful planning and international cooperation.",
+            "B14. Few time is available for mistakes when you are millions of miles from Earth.",
+            "B15. Once astronauts have arrive on Mars, they will need to build shelters.",
+            "B16. The planet's thin atmosphere may to not provide enough protection from solar winds.",
+            "B17. Despite these difficulties, it is certainly does worth pursuing such ambitious goals.",
+            "B18. Each astronauts who volunteer for this mission will be a pioneer."
+        ];
+        lines.forEach((line, idx) => {
+            let num = idx+9;
+            bHtml += `<div class="q-item" id="q-B${num}" style="display:flex; flex-wrap:wrap; align-items:center; gap:10px;"><span class="line-label">B${num}</span> <span style="font-family:monospace; background:#f4f6f9; padding:6px; border-radius:12px;">${line}</span> <input type="text" id="B${num}" placeholder="extra word" size="12"></div>`;
+        });
+
+        // B19-B22 word formation
+        bHtml += `<div class="text-block">I've studied creativity for years. One of the most important (B19) ... (DISCOVER) is that constraints can boost creativity. A (B20) ... (RELATIVE) simple environment often leads to innovative ideas. Many artists have overcome significant (B21) ... (DIFFICULT) to produce masterpieces. This (B22) ... (ABLE) them to think outside the box.</div>`;
+        for(let i=19; i<=22; i++) {
+            bHtml += `<div class="q-item" id="q-B${i}"><div class="q-title">B${i} <input type="text" id="B${i}" placeholder="answer" size="15"></div></div>`;
+        }
+
+        bHtml += '</section>';
+        container.innerHTML = bHtml;
+
+        // ---------- SUBMIT & CHECK ----------
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            let total = 40;
+            let score = 0;
+            let resultDetails = [];
+
+            function getAnswer(qId) {
+                if (qId.startsWith('A')) {
+                    let radios = document.getElementsByName(qId);
+                    for (let r of radios) if (r.checked) return r.value;
+                    return '';
+                } else {
+                    let inp = document.getElementById(qId);
+                    return inp ? inp.value.trim().toLowerCase() : '';
+                }
+            }
+
+            for (let q in correct) {
+                let userAns = getAnswer(q);
+                let correctAns = correct[q].toLowerCase();
+                let isCorrect = (userAns === correctAns);
+                if (isCorrect) score++;
+
+                let qDiv = document.getElementById(`q-${q}`);
+                if (qDiv) {
+                    qDiv.classList.remove('correct','wrong');
+                    qDiv.classList.add(isCorrect ? 'correct' : 'wrong');
+                } else {
+                    let inp = document.getElementById(q);
+                    if(inp) {
+                        inp.style.borderColor = isCorrect ? '#2e7d32' : '#c0392b';
+                        inp.style.backgroundColor = isCorrect ? '#e6f7e6' : '#ffefed';
+                    }
+                }
+
+                if (!isCorrect) {
+                    resultDetails.push({ q, correct: correct[q], explanation: explanations[q] || 'â€”' });
+                }
+            }
+
+            document.getElementById('scoreDisplay').innerText = `${score} / 40`;
+            let explDiv = document.getElementById('explanations');
+            if (resultDetails.length === 0) {
+                explDiv.innerHTML = 'âś… Perfect! Đ’ŃĐµ Đ˛ĐµŃ€Đ˝Đľ. All answers correct.';
+            } else {
+                let htmlExpl = '<strong>âťŚ Mistakes / ĐžŃĐ¸Đ±ĐşĐ¸:</strong><br><ul>';
+                resultDetails.forEach(r => {
+                    htmlExpl += `<li><b>${r.q}</b> â†’ correct: ${r.correct} <br> ${r.explanation}</li>`;
+                });
+                htmlExpl += '</ul>';
+                explDiv.innerHTML = htmlExpl;
+            }
+        });
+    })();
+</script>
 </body>
 </html>
